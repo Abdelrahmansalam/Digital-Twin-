@@ -1,0 +1,18 @@
+<mat-accordion class="container m-5">
+    <div class="d-flex">
+      <button class="btn m-3 btn-secondary ms-auto" (click)="openUploadDialog()">Upload Data</button>
+    </div>
+  
+    <mat-expansion-panel *ngFor="let device of devices">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Data ID: {{ device.id }}</mat-panel-title>
+        <mat-panel-title>Data Name: {{ device.name }}</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-action-row>
+        <button class="btn btn-info" (click)="showDataResult(device)">Show Data</button>
+        <button class="btn btn-warning ms-2">Edit</button> 
+        <button class="btn btn-danger ms-2">Delete</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  

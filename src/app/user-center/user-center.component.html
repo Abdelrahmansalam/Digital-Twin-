@@ -1,0 +1,40 @@
+<div class="containero">
+    <div class="back-button-container">
+      <a routerLink="/home">  <button mat-raised-button class="bg-light">Back</button></a>
+      </div>
+    <div class="box-center m-auto d-flex">
+        <div class="box m-auto">
+            <h1 class="fw-semibold text-center m-5">User Center</h1>
+            <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmitChangePassword()">
+                <div class="m-4 fs-6">
+                    <label for="currentPassword">Current Password:</label>
+                    <input class="form-control" type="password" id="currentPassword" formControlName="currentPassword" />
+                    <div *ngIf="changePasswordForm.get('currentPassword')?.errors && changePasswordForm.get('currentPassword')?.touched" class="alert alert-danger">
+                        <p *ngIf="changePasswordForm.get('currentPassword')?.getError('required')" class="m-0">Current password is required.</p>
+                    </div>
+                </div>
+
+                <div class="m-4 fs-6">
+                    <label for="newPassword">New Password:</label>
+                    <input class="form-control" type="password" id="newPassword" formControlName="newPassword"/>
+                    <div *ngIf="changePasswordForm.get('newPassword')?.errors && changePasswordForm.get('newPassword')?.touched" class="alert alert-danger">
+                        <p *ngIf="changePasswordForm.get('newPassword')?.getError('required')" class="m-0">New password is required.</p>
+                        <p *ngIf="changePasswordForm.get('newPassword')?.getError('pattern')" class="m-0">New password Invalid</p>
+                    </div>
+                </div>
+
+                <div class="m-4 fs-6">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword"/>
+                    <div *ngIf="changePasswordForm.get('confirmPassword')?.errors && changePasswordForm.get('confirmPassword')?.touched" class="alert alert-danger">
+                        <p *ngIf="changePasswordForm.get('confirmPassword')?.getError('required')" class="m-0">Confirm password is required.</p>
+                        <p *ngIf="changePasswordForm.get('confirmPassword')?.getError('pattern')" class="m-0">Confirm password Invalid</p>
+                        <p *ngIf="changePasswordForm.get('confirmPassword')?.getError('mustMatch')" class="m-0">Passwords must match</p>
+                    </div>
+                </div>
+
+                <button class="d-block btn btn-success m-auto" type="submit" [disabled]="!changePasswordForm.valid">Change Password</button>
+            </form>
+        </div>
+    </div>
+</div>

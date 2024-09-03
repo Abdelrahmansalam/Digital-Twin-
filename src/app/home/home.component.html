@@ -1,0 +1,50 @@
+<mat-sidenav-container class="contain">
+  <mat-sidenav #sidebar [mode]='sidenavMode' opened>
+      <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <div class="content">
+          <div class="toolbar">
+            <mat-toolbar>
+              <mat-icon class="menu-icon" (mouseenter)="showSidebar = true" 
+              (mouseleave)="showSidebar = false" (click)="sidebar.toggle()">menu</mat-icon>
+              <div class="box">
+                <button mat-button (click)="showUserMenu = !showUserMenu">
+                  <mat-icon>person</mat-icon>
+                </button>
+                <div class="usermenu" [@slideInOut]="showUserMenu ? 'in' : 'out'" *ngIf="showUserMenu">
+                  <div>
+                   <a routerLink="/createuser"> <button  mat-button>User Center</button>
+                   </a> 
+                  </div>
+                  <div>
+                    <a routerLink="/login"> 
+                      <button class="text-danger" mat-button>Logout</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </mat-toolbar>
+          </div>
+          <div class="main">
+              <div>
+                <ng-container *ngIf="selectedComponent === 'Process'">
+                  <app-content></app-content>
+                </ng-container>
+                <ng-container *ngIf="selectedComponent === 'Data'">
+                  <app-data-content></app-data-content>
+                </ng-container>
+                <ng-container *ngIf="selectedComponent === 'Service'">
+                  <app-service-content></app-service-content>
+                </ng-container>
+                <ng-container *ngIf="selectedComponent === 'Result'">
+                  <app-resultContent></app-resultContent>
+                </ng-container>
+                <ng-container *ngIf="selectedComponent === 'DataResult'">
+                  <app-dataresult></app-dataresult>
+                </ng-container>
+              </div>
+          </div>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

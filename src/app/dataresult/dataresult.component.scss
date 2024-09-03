@@ -1,0 +1,48 @@
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+
+    
+  }
+  
+  .data-info {
+    margin-bottom: 2rem;
+  }
+  
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .chart-container {
+    max-height: 60vh;
+    width: 80vw;
+    overflow: auto;
+  }
+  
+  button {
+    margin-top: 2rem;
+  }
+  

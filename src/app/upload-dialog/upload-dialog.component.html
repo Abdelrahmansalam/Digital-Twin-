@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Upload Data</h2>
+
+<form [formGroup]="uploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <div mat-dialog-content>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name of Data</mat-label>
+      <input matInput formControlName="dataName" required>
+    </mat-form-field>
+    <input hidden type="file" id="file" accept=".json" #fileInput (change)="onFileSelect($event)" required>
+    <button mat-raised-button color="primary" (click)="triggerFileSelect()">Choose file</button>
+    <p>{{ fileName }}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" [disabled]="!uploadForm.valid || !selectedFile">Upload</button>
+  </div>
+</form>

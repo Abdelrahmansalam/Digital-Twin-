@@ -1,0 +1,43 @@
+<div class="container">
+    <div>
+        <div *ngIf="apiError" class="alert alert-danger">
+            {{apiError}}
+        </div>
+        <form (ngSubmit)="handleRegister(creatUserForm)" [formGroup]="creatUserForm">
+           
+            <label for="login">Username : </label>
+            <input type="text" class="form-control mb-2" id="login" formControlName="login">
+    
+            <div *ngIf="creatUserForm.get('login')?.errors && creatUserForm.get('login')?.touched" class="alert alert-danger">
+                <p *ngIf="creatUserForm.get('login')?.getError('minlength')" class="m-0">Username minimum 3 characters</p>
+                <p *ngIf="creatUserForm.get('login')?.getError('required')" class="m-0">Username is required</p>
+            </div>
+    
+            <label for="password">password : </label>
+            <input type="password" class="form-control mb-2" id="password" formControlName="password">
+    
+            <div *ngIf="creatUserForm.get('password')?.errors && creatUserForm.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="creatUserForm.get('password')?.getError('minlength')" class="m-0">Password minimum 6 characters</p>
+                <p *ngIf="creatUserForm.get('password')?.getError('required')" class="m-0">Password is required</p>
+            </div>
+    
+    
+            <div class="form-check">
+            <input class="form-check-input" type="radio" id="role" name="role" value="0" formControlName="role">
+            <label class="form-check-label"  for="role">Admin</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input " type="radio" id="role" name="role" value="1" formControlName="role">
+            <label class="form-check-label " for="role">Client</label><br>
+        </div>
+           <div *ngIf="creatUserForm.get('role')?.errors && creatUserForm.get('role')?.touched" class="alert alert-danger">
+            <p *ngIf="creatUserForm.get('role')?.getError('required')" class="m-0">Role is required</p>
+        </div>
+    
+            <button  type="submit" class="btn btn-info d-block ms-auto">
+                
+                <span >Create new user</span>
+            </button>
+        </form>
+    </div>
+    </div>

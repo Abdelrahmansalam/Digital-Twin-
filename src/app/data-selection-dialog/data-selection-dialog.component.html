@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Select Data</h2>
+<div mat-dialog-content>
+  <form [formGroup]="dataForm">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Select data" aria-label="Data" matInput formControlName="dataControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredData | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="dataForm.value.dataControl" cdkFocusInitial [disabled]="!dataForm.valid">OK</button>
+</div>

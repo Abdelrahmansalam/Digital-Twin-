@@ -1,0 +1,15 @@
+<div class="main-content">
+  <div class="data-info">
+    <h2>{{ dataName }}</h2>
+  </div>
+
+  <!-- Display UML Image -->
+  <div *ngIf="diagramUrl">
+    <img [src]="diagramUrl" alt="UML Diagram" class="uml-diagram">
+  </div>
+
+  <button class="btn btn-info" (click)="downloadData()">Download data</button>
+<button class="btn btn-info" (click)="downloadGraph()">Download Graph</button>
+
+
+</div>

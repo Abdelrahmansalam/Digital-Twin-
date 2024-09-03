@@ -1,0 +1,50 @@
+<mat-accordion class="container m-5">
+
+    <ng-container *ngIf="allCommands?.length; else noCommands">
+
+    <!-- Loop over each command using *ngFor -->
+    <mat-expansion-panel *ngFor="let command of allCommands">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Process ID: {{command.id}} </mat-panel-title>
+  
+        <!-- Assuming the deviceId is the Service Name for demonstration purposes -->
+        <mat-panel-title>Service Name: {{command.command}} </mat-panel-title>
+  
+        <!-- Assuming the command string is the Data used for demonstration purposes -->
+        <mat-panel-title>Device Type Id: {{command.deviceTypeId}} </mat-panel-title>
+  
+        <!-- Display the command status with conditional coloring -->
+        <mat-panel-title>
+          Process Status: 
+          <span [ngClass]="{
+            'text-success': command.status === 'Finished',
+            'text-warning': command.status === 'Waiting',
+            'text-info': command.status === 'Running'
+          }">{{command.status}}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <!-- Sample description. Adjust as needed. -->
+      <div>
+        <p>
+          Timestamp: {{command.timestamp}}<br>
+          Last Updated: {{command.lastUpdated}}
+        </p>
+      </div>
+  
+      <!-- Display the view result button only if the command has a result -->
+      <mat-action-row *ngIf="command.result">
+        <button class="btn btn-success" (click)="onViewResultClick()">View result</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+</ng-container>
+
+<ng-template #noCommands>
+    <div class="no-commands-message">
+      No processes currently.
+    </div>
+  </ng-template>
+
+  
+  </mat-accordion>
+  

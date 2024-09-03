@@ -1,0 +1,34 @@
+<div class="main vh-100 d-flex justify-content-center align-items-center">
+    
+    <div class="form-wrap  p-5">
+        <h3 class="mb-3 text-center fs-2 mb-5">Login</h3>
+    <div>
+        <div *ngIf="apiError" class="alert alert-danger">
+            {{apiError}}
+        </div>
+        <form (ngSubmit)="handlelogin(loginForm)" [formGroup]="loginForm">
+           
+            <label for="login"> </label>
+            <input placeholder="Username" type="text" class="form-control " id="login" formControlName="login">
+    
+            <div *ngIf="loginForm.get('login')?.errors && loginForm.get('login')?.touched" class="alert alert-danger ">
+                <p *ngIf="loginForm.get('login')?.getError('minlength')" class="m-0 fs-5">Username minimum 3 characters</p>
+                <p *ngIf="loginForm.get('login')?.getError('required')" class="m-0 fs-5">Username is required</p>
+            </div>
+    
+            <label for="password"> </label>
+            <input placeholder="Password" type="text" class="form-control mt-4" id="password" formControlName="password">
+    
+            <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="loginForm.get('password')?.getError('minlength')" class="m-0 fs-5">Password minimum 6 characters</p>
+                <p *ngIf="loginForm.get('password')?.getError('required')" class="m-0 fs-5">Password is required</p>
+            </div>
+
+            <button  type="submit" class="btn btn-info mt-3 ">
+                <i *ngIf="!isLoading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="isLoading"  class="text-white fs-6">Login</span>
+            </button>
+        </form>
+    </div>
+    </div>
+</div>

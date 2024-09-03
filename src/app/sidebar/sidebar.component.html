@@ -1,0 +1,78 @@
+<div class="contain">
+  <div class="type">
+    <h3 class="text-center  fw-semibold ">Type of Filter</h3>
+    <div class="button-group">
+      <button mat-raised-button [color]="selectedOption === 'Process' ? 'warn' : 'basic'" 
+      (click)="selectedOption = 'Process'; selectComponent('Process')">Process</button>
+      <button mat-raised-button [color]="selectedOption === 'Data' ? 'warn' : 'basic'" 
+      (click)="selectedOption = 'Data'; selectComponent('Data')">Data</button>
+      <button mat-raised-button [color]="selectedOption === 'Service' ? 'warn' : 'basic'" 
+      (click)="selectedOption = 'Service'; selectComponent('Service')">Service</button>
+    </div>
+  </div>
+    <div class="filter m-5">
+      <h3 class="text-center fw-semibold ">{{selectedOption}} Filter</h3>
+      <div  *ngIf="shouldShowCheckboxes()">
+        <h4 class="fw-semibold checkbox">Status</h4>
+        <div class="checkbox"><input type="checkbox" name="Finished"> Finished</div>
+        <div class="checkbox"><input type="checkbox" name="Running"> Running</div>
+        <div class="checkbox"><input type="checkbox" name="Waiting"> Waiting</div>
+        <form class="mb-2" action="" method="">
+          <label for="service">Data Type: </label>
+          <select id="service">
+            <option value="" selected>Select</option>
+              <option value="a">Type A</option>
+              <option value="b" >Type B</option>
+              <option value="c">Type C</option>
+          </select>
+        </form>
+        <div class="btnSearch"><button class="btn btn-outline-primary btn-m fw-medium" (click)="selectComponent('Process')">Filter</button></div>
+      </div>
+      
+      <div *ngIf="selectedOption === 'Data'">
+        
+        <form class="mb-2" action="" method="">
+          <label for="service">Data Type: </label>
+          <select id="service">
+            <option value="" selected>Select</option>
+              <option value="a">Type A</option>
+              <option value="b" >Type B</option>
+              <option value="c">Type C</option>
+          </select>
+          <h4 class="fw-semibold mt-3 ">Uploaded from</h4>
+              <div>
+                <input type="date" name="selectedDate" [(ngModel)]="currentDate" placeholder="{{ currentDate }}">
+              </div>
+              <div class="btnSearch"><button class="btn btn-outline-primary btn-m fw-medium" (click)="selectComponent('Data')">Filter</button></div>
+        </form>
+      </div>
+      <div *ngIf="selectedOption === 'Service'">
+        <form class="mb-2" method="">
+          <label for="service">Service Type: </label>
+          <select id="service">
+            <option value="" selected>Select</option>
+              <option value="a">Type A</option>
+              <option value="b" >Type B</option>
+              <option value="c">Type C</option>
+          </select>
+        </form>
+        <form class="mb-2" action="" method="">
+          <label for="service">Data Type: </label>
+          <select id="service">
+            <option value="" selected>Select</option>
+              <option value="a">Type A</option>
+              <option value="b" >Type B</option>
+              <option value="c">Type C</option>
+          </select>
+        </form>
+        <h4 class="fw-semibold checkbox2">Run Level</h4>
+         <input class="checkbox2" type="checkbox" name="Finished"> 1
+        <input class="checkbox2" type="checkbox" name="Running"> 2
+        <input class="checkbox2" type="checkbox" name="Waiting"> 3
+        <input class="checkbox2" type="checkbox" name="Waiting"> 4
+         <input class="checkbox2" type="checkbox" name="Waiting"> 5
+        <div class="btnSearch"><button class="btn btn-outline-primary btn-m fw-medium" (click)="selectComponent('Service')">Filter</button></div>
+      </div>
+    </div>
+
+</div>
